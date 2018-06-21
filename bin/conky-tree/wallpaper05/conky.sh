@@ -6,4 +6,4 @@
 #   each other
 
 # starts conky scripts
-conky -dc /home/shit/bin/conky-tree/wallpaper05/conky_left.conf & conky -dc /home/shit/bin/conky-tree/wallpaper05/conky_right.conf & conky -dc /home/shit/bin/conky-tree/wallpaper05/conky_left.conf   -x 1920 & conky -dc /home/shit/bin/conky-tree/wallpaper05/conky_right.conf  -x 1920
+conky -dc ~/bin/conky-tree/wallpaper05/conky_left.conf & conky -dc ~/bin/conky-tree/wallpaper05/conky_right.conf & conky -dc ~/bin/conky-tree/wallpaper05/conky_left.conf   -x 1920 & conky -dc ~/bin/conky-tree/wallpaper05/conky_right.conf  -x 1920
