@@ -4,7 +4,7 @@ created using https://developer.atlassian.com/blog/2016/02/best-way-to-store-dot
 
 # manual installs
 
-`zsh i3 i3-wm guake docker lightdm git vlc `
+`zsh i3 i3-wm guake docker lightdm git vlc ranger pcmanfm alacritty alsa-mixer pcmanfm clementine gnome-system-monitor slack gsimplecal`
 
 ## SpaceVim, OMZsh, powerline fonts
 
@@ -38,7 +38,7 @@ https://software.opensuse.org/download.html?project=home:manuelschneid3r&package
 
 ## Anaconda
 
-https://repo.continuum.io/
+https://www.anaconda.com/download/#linux
 
 ## Pycharm
 
