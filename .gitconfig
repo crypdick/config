@@ -1,0 +1,11 @@
+[user]
+	email = richard.decal@ncf.edu
+	name = Richard Decal
+[credential]
+	helper = cache --timeout=360000000
+[credential "https://github.com"]
+	username = crypdick
+[cola]
+	spellcheck = false
+[core]
+	autocrlf = input
