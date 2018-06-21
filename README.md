@@ -53,4 +53,8 @@ Theme: Dracula. +fontsize. Change default to Anaconda.
 
 https://gitlab.com/MasterPassword/MasterPassword
 
+## nitrogen
+
+open it, set a wp
+
 
