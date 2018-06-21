@@ -45,6 +45,8 @@ https://www.anaconda.com/download/#linux
 https://www.jetbrains.com/pycharm/download/#section=linux
 
 
+Theme: Dracula. +fontsize. Change default to Anaconda.
+
 ## silvius-crypdick
 
 ## mpw
