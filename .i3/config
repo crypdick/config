@@ -69,12 +69,12 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-# Start Applications
+# Launch Applications
 bindsym $mod+i exec pamac-manager
 bindsym $mod+grave exec firefox
 bindsym $mod+Shift+grave exec firefox --private-window
 bindsym $mod+Ctrl+grave exec chromium
-bindsym $mod+f exec pcmanfm
+bindsym $mod+f exec nautilus
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
