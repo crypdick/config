@@ -4,7 +4,7 @@ created using https://developer.atlassian.com/blog/2016/02/best-way-to-store-dot
 
 # manual installs
 
-`zsh i3 i3-wm i3blocks conky guake docker lightdm git vlc ranger pcmanfm alacritty alsa-mixer pcmanfm clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
+`zsh i3 i3-wm i3blocks conky nitrogen compton guake docker lightdm git vlc ranger pcmanfm alacritty alsa-mixer pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
 
 ## SpaceVim, OMZsh, powerline fonts
 
