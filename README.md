@@ -44,6 +44,8 @@ https://github.com/Airblader/i3/wiki/Compiling-&-Installing
 
 https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert
 
+Enable Apps, calculator plugin
+
 ## Anaconda
 
 https://www.anaconda.com/download/#linux
