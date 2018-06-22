@@ -57,6 +57,10 @@ Theme: Dracula. +fontsize. Change default to Anaconda.
 
 ## silvius-crypdick
 
+xdotool
+
+https://github.com/crypdick/silvius-crypdick
+
 ## mpw
 
 https://gitlab.com/MasterPassword/MasterPassword
