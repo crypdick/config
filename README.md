@@ -92,3 +92,7 @@ open it, set a wp
 https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e
 
 pip install tensorflow-gpu
+
+## break reminders
+
+https://github.com/hovancik/stretchly/
