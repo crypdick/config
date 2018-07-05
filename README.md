@@ -6,6 +6,10 @@ created using https://developer.atlassian.com/blog/2016/02/best-way-to-store-dot
 
 `zsh i3 i3-wm i3blocks conky nitrogen compton guake docker lightdm git vlc ranger pcmanfm alacritty alsa-mixer pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
 
+Disable nautilus Desktop opening:
+
+`gsettings set org.gnome.desktop.background show-desktop-icons false`
+
 ## OMZsh, powerline fonts
 
 https://github.com/eyenx/omzsh
@@ -57,7 +61,19 @@ https://www.jetbrains.com/pycharm/download/#section=linux
 
 Theme: Dracula. +fontsize. Change default to Anaconda.
 
-## silvius-crypdick
+
+## voice2code
+
+
+### docker
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
+### pyaudio 
+https://gist.github.com/diegopacheco/d5d4507988eff995da297344751b095e
+
+
+### silvius-crypdick
 
 xdotool
 
@@ -71,4 +87,12 @@ https://gitlab.com/MasterPassword/MasterPassword
 
 open it, set a wp
 
+## CUDA, tf
 
+https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e
+
+pip install tensorflow-gpu
+
+## break reminders
+
+https://github.com/hovancik/stretchly/
