@@ -57,7 +57,19 @@ https://www.jetbrains.com/pycharm/download/#section=linux
 
 Theme: Dracula. +fontsize. Change default to Anaconda.
 
-## silvius-crypdick
+
+## voice2code
+
+
+### docker
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
+### pyaudio 
+https://gist.github.com/diegopacheco/d5d4507988eff995da297344751b095e
+
+
+### silvius-crypdick
 
 xdotool
 
@@ -71,4 +83,8 @@ https://gitlab.com/MasterPassword/MasterPassword
 
 open it, set a wp
 
+## CUDA, tf
 
+https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e
+
+pip install tensorflow-gpu
