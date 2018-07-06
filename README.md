@@ -99,6 +99,9 @@ https://github.com/hovancik/stretchly/
 
 ## music
 
-`youtube-dl --format bestaudio --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' <plist>`
+`youtube-dl  --extract-audio  --audio-format  best --embed-thumbnail --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' --yes-playlist  "https://www.youtube.com/watch?v=lNmrCMCvbFg&list=PLhb-iq93UfDnE3wY1769ahvlNmXr2zMp0"`
+
+https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
+aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
 
 
