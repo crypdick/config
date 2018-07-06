@@ -99,6 +99,6 @@ https://github.com/hovancik/stretchly/
 
 ## music
 
-youtube-dl --format bestaudio --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' <plist>
+`youtube-dl --format bestaudio --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' <plist>`
 
 
