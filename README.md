@@ -22,8 +22,11 @@ https://github.com/powerline/fonts
 
 ## SpaceVim
 
+install vim-gtk
+
 https://github.com/SpaceVim/SpaceVim
 
+edit `~/.SpaceVim.d/init.toml`, change theme to desert
 
 
 
