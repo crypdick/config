@@ -350,6 +350,7 @@ exec_always --no-startup-id albert
 exec --no-startup-id redshift -l 27.34:-82.52
 exec --no-startup-id guake
 exec_always --no-startup-id xscreensaver -nosplash
+exec_always --no-startup-id stretchly
 
 # Color palette used for the terminal ( ~/.extend.Xresources file )
 # Colors are gathered based on the documentation:
