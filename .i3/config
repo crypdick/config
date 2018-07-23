@@ -74,7 +74,7 @@ bindsym $mod+i exec pamac-manager
 bindsym $mod+grave exec firefox
 bindsym $mod+Shift+grave exec firefox --private-window
 bindsym $mod+Ctrl+grave exec chromium
-bindsym $mod+f exec nautilus
+bindsym $mod+f exec nautilus --browser --no-desktop 
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'

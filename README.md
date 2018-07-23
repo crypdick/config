@@ -6,13 +6,28 @@ created using https://developer.atlassian.com/blog/2016/02/best-way-to-store-dot
 
 `zsh i3 i3-wm i3blocks conky nitrogen compton guake docker lightdm git vlc ranger pcmanfm alacritty alsa-mixer pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
 
-## SpaceVim, OMZsh, powerline fonts
+Disable nautilus Desktop opening:
+
+`gsettings set org.gnome.desktop.background show-desktop-icons false`
+
+## OMZsh, powerline fonts
 
 https://github.com/eyenx/omzsh
 
-https://github.com/SpaceVim/SpaceVim
+https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+
+https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 
 https://github.com/powerline/fonts
+
+## SpaceVim
+
+install vim-gtk
+
+https://github.com/SpaceVim/SpaceVim
+
+edit `~/.SpaceVim.d/init.toml`, change theme to desert
+
 
 
 ## guake
@@ -36,6 +51,8 @@ https://github.com/Airblader/i3/wiki/Compiling-&-Installing
 
 https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert
 
+Enable Apps, calculator plugin
+
 ## Anaconda
 
 https://www.anaconda.com/download/#linux
@@ -47,7 +64,23 @@ https://www.jetbrains.com/pycharm/download/#section=linux
 
 Theme: Dracula. +fontsize. Change default to Anaconda.
 
-## silvius-crypdick
+
+## voice2code
+
+
+### docker
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
+### pyaudio 
+https://gist.github.com/diegopacheco/d5d4507988eff995da297344751b095e
+
+
+### silvius-crypdick
+
+xdotool
+
+https://github.com/crypdick/silvius-crypdick
 
 ## mpw
 
@@ -56,5 +89,22 @@ https://gitlab.com/MasterPassword/MasterPassword
 ## nitrogen
 
 open it, set a wp
+
+## CUDA, tf
+
+https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e
+
+pip install tensorflow-gpu
+
+## break reminders
+
+https://github.com/hovancik/stretchly/
+
+## music
+
+`youtube-dl  --extract-audio  --audio-format  best --embed-thumbnail --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' --yes-playlist  "https://www.youtube.com/watch?v=lNmrCMCvbFg&list=PLhb-iq93UfDnE3wY1769ahvlNmXr2zMp0"`
+
+https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
+aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
 
 
