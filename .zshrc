@@ -124,6 +124,7 @@ export LD_LIBRARY_PATH="LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/
 # Qt for Vaa3D
 
 export PATH="/usr/local/Trolltech/Qt-4.7.3/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # keep this at end of file
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
