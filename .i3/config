@@ -5,10 +5,10 @@
 # find keyboard codenames using `xev`
 
 # ¯\_(ツ)_/¯
-bindsym $mod+Ctrl+s exec ~/bin/shrugger/shrug.sh
+#bindsym $mod+Ctrl+s exec ~/bin/shrugger/shrug.sh
 
 # flash active window
-set $flash --no-startup-id bash ~/bin/rice/scripts/flash_win.sh
+set $flash --no-startup-id bash ~/src/rice/scripts/flash_win.sh
 bindsym $mod+backslash exec $flash
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -39,13 +39,13 @@ font pango:DejaVu Sans Mono 14
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec alacritty
+#bindsym $mod+Shift+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
-#exec --no-startup-id albert
+exec --no-startup-id cerebro
 
 # show floating cheatsheet
 bindsym F10 exec --no-startup-id ~/bin/i3cheatsheet.sh
@@ -156,7 +156,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
@@ -346,12 +346,13 @@ exec --no-startup-id xautolock -time 10 -locker ~/bin/conky-tree/lock.sh
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 #exec --no-startup-id xautolock -time 10 -locker "i3lock -i $(find ~/Pictures/Wallpapers -name "*.jpg"|shuf -n1)"
 exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id nextcloud
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id albert
+#exec_always --no-startup-id albert
 # Start redshift in auto mode
 exec --no-startup-id redshift -l 27.34:-82.52
 exec --no-startup-id guake
-exec_always --no-startup-id xscreensaver -nosplash
+#exec_always --no-startup-id xscreensaver -nosplash
 exec_always --no-startup-id stretchly
 
 # Color palette used for the terminal ( ~/.extend.Xresources file )
