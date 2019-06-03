@@ -4,6 +4,10 @@
 
 `zsh i3 i3-wm i3blocks conky nitrogen compton guake docker lightdm git vlc ranger pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
 
+# i3-gaps
+
+https://github.com/pasiegel/i3-gaps-install-ubuntu
+
 
 # Disable nautilus Desktop opening:
 
