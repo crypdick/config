@@ -1,12 +1,11 @@
 # config
 
-created using https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+# Install packages
 
-# manual installs
+`zsh i3 i3-wm i3blocks conky nitrogen compton guake docker lightdm git vlc ranger pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
 
-`zsh i3 i3-wm i3blocks conky nitrogen compton guake docker lightdm git vlc ranger pcmanfm alacritty alsa-mixer pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
 
-Disable nautilus Desktop opening:
+# Disable nautilus Desktop opening:
 
 `gsettings set org.gnome.desktop.background show-desktop-icons false`
 
@@ -19,6 +18,22 @@ https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 
 https://github.com/powerline/fonts
+
+## if fontawesome is not working
+
+wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
+unzip fontawesome-free-5.0.13.zip
+sudo cp fontawesome-free-5.0.13/use-on-desktop/* /usr/local/share/fonts/
+fc-cache -f -v
+#the next command help see the name to use
+#here Font Awesome 5 Free
+fc-list | grep -i "awe"
+
+# Import dotfiles
+
+Use this guide to migrate:
+
+https://www.atlassian.com/git/tutorials/dotfiles
 
 ## SpaceVim
 
