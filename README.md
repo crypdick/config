@@ -55,6 +55,10 @@ https://github.com/SpaceVim/SpaceVim
 edit `~/.SpaceVim.d/init.toml`, change theme to desert
 
 
+# vim
+
+set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
+
 
 ## guake
 
