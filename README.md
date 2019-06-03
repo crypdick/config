@@ -26,11 +26,18 @@ https://github.com/powerline/fonts
 ## if fontawesome is not working
 
 wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
+
 unzip fontawesome-free-5.0.13.zip
+
 sudo cp fontawesome-free-5.0.13/use-on-desktop/* /usr/local/share/fonts/
+
+
 fc-cache -f -v
-#the next command help see the name to use
+
+#the next command help see the name to use-on-desktop
+
 #here Font Awesome 5 Free
+
 fc-list | grep -i "awe"
 
 # Import dotfiles
