@@ -69,6 +69,9 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Launch Applications
 bindsym $mod+i exec pamac-manager
+bindsym $mod+` exec firefox
+bindsym $mod+Shift+` exec firefox --private-window
+bindsym $mod+Ctrl+` exec chromium
 bindsym $mod+grave exec firefox
 bindsym $mod+Shift+grave exec firefox --private-window
 bindsym $mod+Ctrl+grave exec chromium
