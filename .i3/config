@@ -45,7 +45,6 @@ bindsym $mod+Shift+q kill
 exec --no-startup-id cerebro
 
 # show floating cheatsheet
-bindsym F10 exec --no-startup-id ~/bin/i3cheatsheet.sh
 for_window [instance="xfce4-terminal" title="i3 Shortcuts"] floating enable, move absolute position center, resize grow left 318, resize grow right 318, resize grow down 115, resize grow up 115
 
 # launch categorized menu
@@ -341,8 +340,8 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id ~/bin/conky-tree/wallpaper05/conky.sh
-exec --no-startup-id xautolock -time 10 -locker ~/bin/conky-tree/lock.sh
+exec --no-startup-id ~/src/conky-tree/wallpaper05/conky.sh
+exec --no-startup-id xautolock -time 10 -locker ~/src/conky-tree/lock.sh
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 #exec --no-startup-id xautolock -time 10 -locker "i3lock -i $(find ~/Pictures/Wallpapers -name "*.jpg"|shuf -n1)"
 exec_always --no-startup-id ff-theme-util
