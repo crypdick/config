@@ -2,7 +2,7 @@
 
 # Install packages
 
-`zsh i3 i3-wm i3blocks conky nitrogen compton guake docker lightdm git vlc ranger pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad`
+`zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docker lightdm git vlc scrot ranger pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad  unattended-upgrades`
 
 # i3-gaps
 
@@ -137,4 +137,8 @@ https://github.com/hovancik/stretchly/
 https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
 aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
 
+## unattended upgrades
 
+`dpkg-reconfigure --priority=low unattended-upgrades`
+
+edit `/var/run/reboot-required`

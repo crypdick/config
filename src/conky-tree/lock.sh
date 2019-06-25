@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #https://www.reddit.com/r/i3wm/comments/5w95fp/how_to_get_lockscreen_like_this/
 
-icon="$HOME/bin/conky-tree/gay_space_communism.png"
+icon="$HOME/src/conky-tree/gay_space_communism.png"
 tmpbg='/tmp/screen.png'
 
 (( $# )) && { icon=$1; }
