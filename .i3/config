@@ -349,7 +349,10 @@ exec_always --no-startup-id nextcloud
 exec_always --no-startup-id fix_xcursor
 #exec_always --no-startup-id albert
 # Start redshift in auto mode
-exec --no-startup-id redshift -l 27.34:-82.52
+# SRQ 27.34:-82.52
+# Adelaide -34.93:138.67
+# BsAs -34.54:-58.41
+exec --no-startup-id redshift -l -34.93:138.67
 exec --no-startup-id guake
 #exec_always --no-startup-id xscreensaver -nosplash
 exec_always --no-startup-id stretchly

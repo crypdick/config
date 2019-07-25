@@ -110,6 +110,10 @@ export PATH="$HOME/src/anaconda3/bin:$HOME/.local/bin/:$PATH"
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64/
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64"
 
+# spotify-dl config
+export SPOTIPY_CLIENT_ID='352a708e3cc94cfba8451637e3c29aa7'
+export SPOTIPY_CLIENT_SECRET='c005fa88b0c84919af4a32355bda6ec2'
+#export SPOTIPY_REDIRECT_URI='your-app-redirect-url'
 
 # keep this at end of file
 source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
