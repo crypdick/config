@@ -74,7 +74,8 @@ bindsym $mod+Ctrl+` exec chromium
 bindsym $mod+grave exec firefox
 bindsym $mod+Shift+grave exec firefox --private-window
 bindsym $mod+Ctrl+grave exec chromium
-bindsym $mod+f exec nautilus
+bindsym $mod+f exec gnome-terminal -e ranger
+bindsym $mod+n exec --no-startup-id ~/src/conky-tree/i3_scratchpad_toggle ranger "$TERMINAL -t ranger -e ranger"
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -87,7 +88,7 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+q --release exec --no-startup-id xkill
 bindsym $mod+m exec clementine
 bindsym $mod+Ctrl+Delete exec gnome-system-monitor
-bindsym $mod+n exec zim
+#bindsym $mod+n exec zim
 bindsym $mod+p exec keepassx
 
 
@@ -267,6 +268,7 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
+for_window [title="ranger"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -351,8 +353,9 @@ exec_always --no-startup-id fix_xcursor
 # Start redshift in auto mode
 # SRQ 27.34:-82.52
 # Adelaide -34.93:138.67
+# NZ -36.85:174.76
 # BsAs -34.54:-58.41
-exec --no-startup-id redshift -l -34.93:138.67
+exec --no-startup-id redshift -l -36.85:174.76
 exec --no-startup-id guake
 #exec_always --no-startup-id xscreensaver -nosplash
 exec_always --no-startup-id stretchly

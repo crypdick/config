@@ -114,6 +114,7 @@ export LD_LIBRARY_PATH="LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/
 export SPOTIPY_CLIENT_ID='352a708e3cc94cfba8451637e3c29aa7'
 export SPOTIPY_CLIENT_SECRET='c005fa88b0c84919af4a32355bda6ec2'
 #export SPOTIPY_REDIRECT_URI='your-app-redirect-url'
+#export YOUTUBE_DEV_KEY=''
 
 # keep this at end of file
 source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
