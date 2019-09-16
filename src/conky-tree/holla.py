@@ -7,10 +7,11 @@ import requests
 
 event = "holla_back"
 
-endpoint = "https://maker.ifttt.com/trigger/{event}/with/key/cyM6FkGTEiki8_rax67boq9sgsJ-QN9bWxbfDYu-YK5".format(event)
+endpoint = "https://maker.ifttt.com/trigger/{event}/with/key/cyM6FkGTEiki8_rax67boq9sgsJ-QN9bWxbfDYu-YK5".format(event=event)
 
 song_title = "Starcraft nuclear launch detected"
 
 payload = { "value1" : song_title, "value2" : "", "value3" : "" }
 
-requests.get(endpoint, params=payload)
+print(requests.get(endpoint, params=payload))
+
