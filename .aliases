@@ -15,4 +15,5 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias TODO='vim ~/doc_shit/TODO'
 alias grep='egrep --color'
 alias i3cheatsheet='egrep ^bind ~/.i3/config | cut -d '\'' '\'' -f 2- | sed '\''s/ /\t/'\'' | column -ts $'\''\t'\'' | pr -2 -w 160 -t | less'
-alias holla="curl -X POST -H \"Content-Type: application/json\" -d '{\"value1\":\"job finished on pito\"}' https://maker.ifttt.com/trigger/python_requests/with/key/ctd5f6eNtWpP8pnMADAG7QcQkpdxxQ29eKz2CB-8MdN"
+alias holla="curl -X POST -H \"Content-Type: application/json\" -d '{\"value1\":'\"job finished on pito\"}' https://maker.ifttt.com/trigger/python_requests/with/key/ctd5f6eNtWpP8pnMADAG7QcQkpdxxQ29eKz2CB-8MdN"
+alias holla='python ~/src/conky-tree/holla.py'
