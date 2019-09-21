@@ -1,5 +1,9 @@
 # config
 
+# first,
+# sudo apt install mosh
+# then, add firewall rules
+
 # get this running with
 # wget https://raw.githubusercontent.com/crypdick/config/master/README | bash
 
@@ -44,8 +48,9 @@ source ~/.zshrc
 
 # Install packages
 
-sudo apt install zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docker lightdm git vlc scrot ranger  gnome-system-monitor gsimplecal fonts-font-awesome mousepad   curl
+sudo apt install docker scrot ranger fonts-font-awesome
 
+# for GUI system
 
 # Python
 # latest version at  https://www.anaconda.com/download/#linux
@@ -56,10 +61,6 @@ source .zshrc
 pip install -y --upgrade pip
 pip install -y tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn
 
-# GUI stuff
-# i3-gaps
-
-#https://github.com/pasiegel/i3-gaps-install-ubuntu
 
 
 
@@ -72,15 +73,16 @@ unzip fontawesome-free-5.0.13.zip
 sudo cp fontawesome-free-5.0.13/use-on-desktop/* /usr/local/share/fonts/
 rm -rf fontawesome-free*
 fc-cache -f -v
-
 #the next command help see the name to use-on-desktop
 #here Font Awesome 5 Free
-
 fc-list | grep -i "awe"
 
 # vim
 
 # set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
+
+# GUI stuff
+#sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad
 
 
 ## guake
@@ -92,23 +94,23 @@ fc-list | grep -i "awe"
 #Change to Powerline font.
 
 ## i3-gaps
-
+#https://github.com/pasiegel/i3-gaps-install-ubuntu
 #Make sure to install dependencies first
 #https://github.com/Airblader/i3/wiki/Compiling-&-Installing
-sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool 
+#sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
 
-cd /tmp
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-git checkout gaps && git pull
-autoreconf --force --install
-rm -rf build
-mkdir build
-cd build
-../configure --prefix=/usr --sysconfdir=/etc
-make
-sudo make install
-cd ~
+#cd /tmp
+#git clone https://www.github.com/Airblader/i3 i3-gaps
+#cd i3-gaps
+#git checkout gaps && git pull
+#autoreconf --force --install
+#rm -rf build
+#mkdir build
+#cd build
+#../configure --prefix=/usr --sysconfdir=/etc
+#make
+#sudo make install
+#cd ~
 
 ## albert
 
@@ -169,6 +171,7 @@ sudo apt -y autoremove
 
 # install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim -c VundleUpdate -c quitall
 
 # finally, unattended upgrades at very end
 sudo apt -y install unattended-upgrades
