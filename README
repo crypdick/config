@@ -50,6 +50,7 @@ sudo apt install zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docke
 # latest version at  https://www.anaconda.com/download/#linux
 curl https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh -o anaconda.sh
 bash anaconda.sh -b -f -p $HOME/src/anaconda3
+rm -f anaconda.sh
 pip install -y --upgrade pip
 pip install -y tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn
 
