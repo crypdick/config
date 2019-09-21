@@ -19,7 +19,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Install config
 # based on https://www.atlassian.com/git/tutorials/dotfiles
-git clone --bare git@bitbucket.org:durdn/cfg.git $HOME/.cfg
+git clone --bare https://github.com/crypdick/config.git $HOME/.cfg
 
 # define config in current scope
 function config {
