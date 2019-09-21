@@ -43,7 +43,7 @@ source ~/.zshrc
 
 # Install packages
 
-sudo apt install zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docker lightdm git vlc scrot ranger pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad  unattended-upgrades curl
+sudo apt install zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docker lightdm git vlc scrot ranger  gnome-system-monitor gsimplecal fonts-font-awesome mousepad   curl
 
 
 # Python
@@ -91,6 +91,20 @@ fc-list | grep -i "awe"
 
 #Make sure to install dependencies first
 #https://github.com/Airblader/i3/wiki/Compiling-&-Installing
+sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool 
+
+cd /tmp
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps
+git checkout gaps && git pull
+autoreconf --force --install
+rm -rf build
+mkdir build
+cd build
+../configure --prefix=/usr --sysconfdir=/etc
+make
+sudo make install
+cd ~
 
 ## albert
 
@@ -151,3 +165,7 @@ fc-list | grep -i "awe"
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 
 #edit `/var/run/reboot-required`
+
+
+# finally, unattended upgrades at very end
+sudo apt -y install unattended-upgrades
