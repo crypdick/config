@@ -53,12 +53,12 @@ filetype plugin on
 syntax on
 
 " see end of https://jeffkreeftmeijer.com/vim-number/
-":set number relativenumber
-":augroup numbertoggle
-":  autocmd!
-":  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-":  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-":augroup END
+:set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
 
 " input command feedback
 " https://stackoverflow.com/a/8160809/4212158
