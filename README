@@ -11,7 +11,8 @@ sudo apt -y install git zsh curl zsh-syntax-highlighting
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source .zshrc
 
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -51,6 +52,7 @@ sudo apt install zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docke
 curl https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh -o anaconda.sh
 bash anaconda.sh -b -f -p $HOME/src/anaconda3
 rm -f anaconda.sh
+source .zshrc
 pip install -y --upgrade pip
 pip install -y tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn
 
