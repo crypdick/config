@@ -1,98 +1,105 @@
 # config
 
+# get zsh shell
+sudo apt update && sudo apt -y upgrade
+sudo apt -y install git zsh curl zsh-syntax-highlighting
+
+#https://github.com/eyenx/omzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Install config
+# based on https://www.atlassian.com/git/tutorials/dotfiles
+git clone --bare git@bitbucket.org:durdn/cfg.git $HOME/.cfg
+
+# define config in current scope
+function config {
+   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+}
+mkdir -p .config-backup
+
+# checkout bare repo to home
+config checkout
+# but, if there are errors, back up config and then re-run checkout
+if [ $? = 0 ]; then
+  echo "Checked out config.";
+  else
+    echo "Backing up pre-existing dot files.";
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+fi;
+config checkout
+
+config config status.showUntrackedFiles no
+
+source ~/.zshrc
+
 # Install packages
 
-`zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docker lightdm git vlc scrot ranger pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad  unattended-upgrades`
+sudo apt install zsh i3 i3-wm i3lock i3blocks conky nitrogen compton guake docker lightdm git vlc scrot ranger pcmanfm nautilus clementine gnome-system-monitor slack gsimplecal fonts-font-awesome mousepad  unattended-upgrades curl
 
+
+# Python
+# latest version at  https://www.anaconda.com/download/#linux
+wget https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh | bash
+pip install -y --upgrade pip
+pip install -y tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn
+
+# GUI stuff
 # i3-gaps
 
-https://github.com/pasiegel/i3-gaps-install-ubuntu
+#https://github.com/pasiegel/i3-gaps-install-ubuntu
 
 
-# Disable nautilus Desktop opening:
 
-`gsettings set org.gnome.desktop.background show-desktop-icons false`
-
-## OMZsh, powerline fonts
-
-https://github.com/eyenx/omzsh
-
-https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-
-https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-
-https://github.com/powerline/fonts
-
+# https://github.com/powerline/fonts
+sudo apt-get -y install fonts-powerline
 ## if fontawesome is not working
 
 wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
-
 unzip fontawesome-free-5.0.13.zip
-
 sudo cp fontawesome-free-5.0.13/use-on-desktop/* /usr/local/share/fonts/
-
-
+rm -rf fontawesome-free*
 fc-cache -f -v
 
 #the next command help see the name to use-on-desktop
-
 #here Font Awesome 5 Free
 
 fc-list | grep -i "awe"
 
-# Import dotfiles
-
-Use this guide to migrate:
-
-https://www.atlassian.com/git/tutorials/dotfiles
-
-## SpaceVim
-
-install vim-gtk
-
-https://github.com/SpaceVim/SpaceVim
-
-edit `~/.SpaceVim.d/init.toml`, change theme to desert
-
-
 # vim
 
-set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
+# set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
 
 
 ## guake
 
-toggle to mod+Enter and autostart. Change to Desert theme. Disable popup notification, hide tray icon.
+#toggle to mod+Enter and autostart. Change to Desert theme. Disable popup notification, hide tray icon.
 
-Ctrl-C to copy, Ctrl-V to paste, Ctrl-T new tab, Ctrl+Shift+T close tab, switch tabs Alt-left or right, move tabs with Ctrl+Alt_left or right. Rename Ctrl-R.
+#Ctrl-C to copy, Ctrl-V to paste, Ctrl-T new tab, Ctrl+Shift+T close tab, switch tabs Alt-left or right, move tabs with Ctrl+Alt_left or right. Rename Ctrl-R.
 
-Change to Powerline font.
-
-## firefox
-
-Log in. Should auto-install Vimium.
+#Change to Powerline font.
 
 ## i3-gaps
 
-Make sure to install dependencies first
-https://github.com/Airblader/i3/wiki/Compiling-&-Installing
+#Make sure to install dependencies first
+#https://github.com/Airblader/i3/wiki/Compiling-&-Installing
 
 ## albert
 
-https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert
+#https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert
 
-Enable Apps, calculator plugin
+#Enable Apps, calculator plugin
 
-## Anaconda
-
-https://www.anaconda.com/download/#linux
 
 ## Pycharm
 
-https://www.jetbrains.com/pycharm/download/#section=linux
-
-
-Theme: Dracula. +fontsize. Change default to Anaconda.
+#https://www.jetbrains.com/pycharm/download/#section=linux
+#Theme: Dracula. +fontsize. Change default to Anaconda.
 
 
 ## voice2code
@@ -100,45 +107,44 @@ Theme: Dracula. +fontsize. Change default to Anaconda.
 
 ### docker
 
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+#https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 
 ### pyaudio 
-https://gist.github.com/diegopacheco/d5d4507988eff995da297344751b095e
+#https://gist.github.com/diegopacheco/d5d4507988eff995da297344751b095e
 
 
 ### silvius-crypdick
 
-xdotool
+#xdotool
 
-https://github.com/crypdick/silvius-crypdick
+#https://github.com/crypdick/silvius-crypdick
 
 ## mpw
 
-https://gitlab.com/MasterPassword/MasterPassword
+#https://gitlab.com/MasterPassword/MasterPassword
 
 ## nitrogen
 
-open it, set a wp
+#open it, set a wp
 
 ## CUDA, tf
 
-https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e
+#https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e
 
-pip install tensorflow-gpu
 
 ## break reminders
 
-https://github.com/hovancik/stretchly/
+#https://github.com/hovancik/stretchly/
 
 ## music
 
-`youtube-dl  --extract-audio  --audio-format  best --embed-thumbnail --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' --yes-playlist  "https://www.youtube.com/watch?v=lNmrCMCvbFg&list=PLhb-iq93UfDnE3wY1769ahvlNmXr2zMp0"`
+# `youtube-dl  --extract-audio  --audio-format  best --embed-thumbnail --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' --yes-playlist  "https://www.youtube.com/watch?v=lNmrCMCvbFg&list=PLhb-iq93UfDnE3wY1769ahvlNmXr2zMp0"`
 
-https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
-aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
+#https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
+#aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
 
 ## unattended upgrades
 
-`dpkg-reconfigure --priority=low unattended-upgrades`
+sudo dpkg-reconfigure --priority=low unattended-upgrades
 
-edit `/var/run/reboot-required`
+#edit `/var/run/reboot-required`
