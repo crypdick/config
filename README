@@ -164,13 +164,15 @@ cd ~
 #https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
 #aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
 
-## unattended upgrades
+# clean up
+sudo apt -y autoremove
 
+# install Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# finally, unattended upgrades at very end
+sudo apt -y install unattended-upgrades
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 
 #edit `/var/run/reboot-required`
 
-
-# finally, unattended upgrades at very end
-sudo apt -y autoremove
-sudo apt -y install unattended-upgrades
