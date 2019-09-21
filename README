@@ -1,5 +1,8 @@
 # config
 
+# get this running with
+# wget https://raw.githubusercontent.com/crypdick/config/master/README | bash
+
 # get zsh shell
 sudo apt update && sudo apt -y upgrade
 sudo apt -y install git zsh curl zsh-syntax-highlighting
