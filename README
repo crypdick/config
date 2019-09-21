@@ -28,7 +28,7 @@ function config {
 mkdir -p .config-backup
 
 # checkout bare repo to home
-config checkout
+config checkout -f
 # but, if there are errors, back up config and then re-run checkout
 if [ $? = 0 ]; then
   echo "Checked out config.";
