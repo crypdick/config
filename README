@@ -3,6 +3,8 @@
 # first,
 # sudo apt install mosh curl
 # then, add firewall rules
+#
+#
 
 # get this running with
 # curl https://raw.githubusercontent.com/crypdick/config/master/README | bash
@@ -79,7 +81,7 @@ rm -f anaconda.sh
 source .zshrc
 pip install -y --upgrade pip
 conda update --all
-pip install -y tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn python-dotenv
+pip install -y tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn python-dotenv fire
 
 # GUI stuff
 #sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad

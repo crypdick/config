@@ -20,13 +20,14 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'vimwiki/vimwiki'
 Plugin 'thaerkh/vim-workspace'
 Plugin 'mhinz/vim-startify'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe' replacing with tabnine
 Plugin 'vim-airline/vim-airline'
 " automagically figure out indent settings from context
 Plugin 'tpope/vim-sleuth'
 " configs everyone can agree on (adds relative line numbers
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'zxqfl/tabnine-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

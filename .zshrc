@@ -102,7 +102,7 @@ export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 
 export PATH="$HOME/src/anaconda3/bin:$HOME/.local/bin/:$PATH"

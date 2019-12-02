@@ -8,6 +8,10 @@
 set $flash --no-startup-id bash ~/src/rice/scripts/flash_win.sh
 bindsym $mod+backslash exec $flash
 
+# autotile windows into quadrants
+#  https://github.com/nwg-piotr/autotiling
+exec --no-startup-id python3 ~/src/autotiling/autotiling.py
+
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 #exec --no-startup-id xmodmap -e 'keycode 133 = Super_L' && xset -r 133
