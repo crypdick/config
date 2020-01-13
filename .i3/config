@@ -46,7 +46,7 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start program launcher
-exec --no-startup-id cerebro
+bindsym $mod+space exec rofi -show run
 
 # show floating cheatsheet
 for_window [instance="xfce4-terminal" title="i3 Shortcuts"] floating enable, move absolute position center, resize grow left 318, resize grow right 318, resize grow down 115, resize grow up 115
@@ -284,7 +284,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking
 # removed switch_(u)ser,
@@ -423,41 +423,41 @@ set $i3_color17         #0c0c0c
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 # originally status_command i3blocks
-bar {
-    # font  xft:Noto Sans 10.5
-    font pango:DejaVu Sans Mono, Font Awesome 10.5 
-    status_command i3blocks
-	#status_command i3status-rs ~/.i3/i3bar-rs-config.toml
-	position bottom
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-	tray_output primary
-	tray_output eDP1
-    tray_output HDMI1
-
-	bindsym button4 nop
-	bindsym button5 nop
-	
-	
-	strip_workspace_numbers no
-
-	colors {
-#       background $transparent
-        background $i3_background
-        statusline $i3_text
-        separator  $i3_separator
-
+#bar {
+#    # font  xft:Noto Sans 10.5
+#    font pango:DejaVu Sans Mono, Font Awesome 10.5 
+#    status_command i3blocks
+#	#status_command i3status-rs ~/.i3/i3bar-rs-config.toml
+#	position bottom
+#
+### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output primary
+#	tray_output eDP1
+#    tray_output HDMI1
+#
+#	bindsym button4 nop
+#	bindsym button5 nop
+#	
+#	
+#	strip_workspace_numbers no
+#
+#	colors {
+##       background $transparent
+#        background $i3_background
+#        statusline $i3_text
+#        separator  $i3_separator
+#
 #                                  border  backgr. text
-        focused_workspace   $i3_color1  $i3_color4  $i3_text
-        active_workspace    $i3_color2  $i3_color3  $i3_color5
-        inactive_workspace  $i3_color2  $i3_color3  $i3_color6
-        urgent_workspace    $i3_color4  $i3_color5  $i3_color7
-    }
-}
+#        focused_workspace   $i3_color1  $i3_color4  $i3_text
+#        active_workspace    $i3_color2  $i3_color3  $i3_color5
+#        inactive_workspace  $i3_color2  $i3_color3  $i3_color6
+#        urgent_workspace    $i3_color4  $i3_color5  $i3_color7
+#    }
+#}
 
 # hide/unhide i3status bar
 #bindsym $mod+m bar mode toggle
-
+exec_always --no-startup-id ~/.i3/polybar.sh &
 
 # Theme colors
 # class                 border      backgr.     text        indic.      child_border
