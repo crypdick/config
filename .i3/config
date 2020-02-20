@@ -361,7 +361,7 @@ exec --no-startup-id xautolock -time 10 -locker ~/src/conky-tree/lock.sh
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 #exec --no-startup-id xautolock -time 10 -locker "i3lock -i $(find ~/Pictures/Wallpapers -name "*.jpg"|shuf -n1)"
 exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id nextcloud
+#exec_always --no-startup-id nextcloud
 exec_always --no-startup-id fix_xcursor
 #exec_always --no-startup-id albert
 # Start redshift in auto mode
