@@ -81,7 +81,7 @@ rm -f anaconda.sh
 source .zshrc
 pip install --upgrade pip
 conda update --all
-pip install tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn python-dotenv fire
+pip install tensorflow-gpu tqdm bs4 dash boto3 plotly pyspark seaborn fire torch
 
 # GUI stuff
 #sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad
