@@ -18,7 +18,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 #source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source .zshrc
+source ~/.zshrc
 
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
