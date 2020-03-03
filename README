@@ -79,9 +79,9 @@ curl https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -o anac
 bash anaconda.sh -b -p $HOME/src/anaconda3
 rm -f anaconda.sh
 source .zshrc
-pip install -y --upgrade pip
+pip install --upgrade pip
 conda update --all
-pip install -y tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn python-dotenv fire
+pip install tensorflow-gpu tqdm bs4 dash boto3 plotly dotenv pyspark seaborn python-dotenv fire
 
 # GUI stuff
 #sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad
