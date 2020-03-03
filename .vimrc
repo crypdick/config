@@ -4,6 +4,7 @@
 set rtp+=~/.fzf
 
 " VUNDLE BLOCK
+" Don't try to be like vi
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -15,19 +16,48 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
 " motions on speed
 Plugin 'easymotion/vim-easymotion'
+
+" personal wiki
 Plugin 'vimwiki/vimwiki'
+
+" Automated Vim session management with file auto-save and persistent undo history 
 Plugin 'thaerkh/vim-workspace'
+
+" fancy start screen
 Plugin 'mhinz/vim-startify'
-" Plugin 'Valloric/YouCompleteMe' replacing with tabnine
+
+" theming
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " automagically figure out indent settings from context
 Plugin 'tpope/vim-sleuth'
-" configs everyone can agree on (adds relative line numbers
+
+" configs everyone can agree on (adds relative line numbers)
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+
+" autocompletion
 Plugin 'zxqfl/tabnine-vim'
+" Plugin 'Valloric/YouCompleteMe' replacing with tabnine
+" tab autocompletion
+Plugin 'ervandew/supertab'
+
+" python code folding
+Plugin 'tmhedberg/SimpylFold'
+
+" git integration
+Plugin 'tpope/vim-fugitive'
+
+" syntax checking
+Plugin 'vim-syntastic/syntastic'
+
+
+" filesystem browser
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
