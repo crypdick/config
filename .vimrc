@@ -28,6 +28,9 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'zxqfl/tabnine-vim'
+Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'davidhalter/jedi-vim'
+Plugin 'vim-syntastic/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
