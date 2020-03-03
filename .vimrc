@@ -54,10 +54,13 @@ Plugin 'tpope/vim-fugitive'
 
 " syntax checking
 Plugin 'vim-syntastic/syntastic'
-
+" Plugin 'davidhalter/jedi-vim'  recommended by Steve
 
 " filesystem browser
 Plugin 'scrooloose/nerdtree'
+
+" for C programming
+" Plugin 'ludovicchabant/vim-gutentags'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
