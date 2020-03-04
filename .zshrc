@@ -118,6 +118,6 @@ export SPOTIPY_CLIENT_SECRET='c005fa88b0c84919af4a32355bda6ec2'
 
 # keep this at end of file
 source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  install thru apt instead
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
