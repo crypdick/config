@@ -72,7 +72,14 @@ source ~/.zshrc
 
 # Install packages
 
-sudo apt install docker scrot ranger fonts-font-awesome 
+sudo apt install docker scrot ranger fonts-font-awesome
+
+# eternal terminal stuff
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:jgmath2000/et
+sudo apt-get update
+sudo apt-get install et
+
 
 # for dev envs  TODO flag this
 # Python
