@@ -72,7 +72,7 @@ source ~/.zshrc
 
 # Install packages
 
-sudo apt install docker scrot ranger fonts-font-awesome
+sudo apt install docker scrot ranger fonts-font-awesome sshfs
 
 # eternal terminal stuff
 sudo apt-get install -y software-properties-common
