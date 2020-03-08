@@ -64,15 +64,17 @@ fc-list | grep -i "awe"
 
 # set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
 
-
+# fzf before source
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
 
 source ~/.zshrc
 
 # Install packages
 
-sudo apt install docker scrot ranger fonts-font-awesome
+sudo apt install docker scrot ranger fonts-font-awesome 
 
-# for dev envs
+# for dev envs  TODO flag this
 # Python
 # latest version at  https://www.anaconda.com/download/#linux
 #curl https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -o anaconda.sh
@@ -83,7 +85,7 @@ sudo apt install docker scrot ranger fonts-font-awesome
 #conda update --all
 #pip install tensorflow-gpu tqdm bs4 dash boto3 plotly pyspark seaborn fire torch
 
-# GUI stuff
+# GUI stuff  TODO make flag
 #sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad
 
 
