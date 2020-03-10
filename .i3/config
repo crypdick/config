@@ -369,7 +369,8 @@ exec_always --no-startup-id fix_xcursor
 # Adelaide -34.93:138.67
 # NZ -36.85:174.76
 # BsAs -34.54:-58.41
-exec --no-startup-id redshift -l -36.85:174.76
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent   # geoclue for redshift
+exec --no-startup-id redshift-gtk  # -l -34.54:-58.41 automode works!
 exec --no-startup-id guake
 #exec_always --no-startup-id xscreensaver -nosplash
 exec_always --no-startup-id stretchly
