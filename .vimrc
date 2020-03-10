@@ -49,6 +49,9 @@ Plugin 'ervandew/supertab'
 " python code folding
 Plugin 'tmhedberg/SimpylFold'
 
+" commenting with [count]<leader>cc
+Plugin 'preservim/nerdcommenter' 
+
 " git integration
 Plugin 'tpope/vim-fugitive'
 
