@@ -1,29 +1,27 @@
 # config
 
-# first,
-# sudo apt install mosh curl
-# then, add firewall rules
-#
-#
+sudo apt install curl
 
-# get this running with
+# run this README with
 # curl https://raw.githubusercontent.com/crypdick/config/master/README | bash
 
-# get zsh shell
+
+echo "##### THINGS TO INSTALL EVERYWHERE ###"
+
+echo "setup vanilla shell before overwriting it when pulling config "
 sudo apt update && sudo apt -y upgrade
-sudo apt -y install git zsh zsh-syntax-highlighting
+sudo apt -y install git zsh zsh-syntax-highlighting vim
 
 #https://github.com/eyenx/omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 #source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zshrc
-
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+source ~/.zshrc
 
-# Install config
+echo "fetching config repo from github"
 # based on https://www.atlassian.com/git/tutorials/dotfiles
 git clone --bare https://github.com/crypdick/config.git $HOME/.cfg
 
@@ -47,22 +45,13 @@ config checkout
 config config status.showUntrackedFiles no
 
 
-# https://github.com/powerline/fonts
-sudo apt-get -y install fonts-powerline
-## if fontawesome is not working
+echo "install Vundle"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim -c VundleUpdate -c quitall
 
-wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
-unzip fontawesome-free-5.0.13.zip
-sudo cp fontawesome-free-5.0.13/use-on-desktop/* /usr/local/share/fonts/
-rm -rf fontawesome-free*
-fc-cache -f -v
-#the next command help see the name to use-on-desktop
-#here Font Awesome 5 Free
-fc-list | grep -i "awe"
 
-# vim
-
-# set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
+# TODO git pull vimwiki
+# TODO set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
 
 # fzf before source
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -70,77 +59,96 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 source ~/.zshrc
 
-# Install packages
+# unattended upgrades
+sudo apt -y install unattended-upgrades
+sudo dpkg-reconfigure --priority=low unattended-upgrades
 
-sudo apt install docker scrot ranger fonts-font-awesome sshfs
+# TODO what is this about
+echo "edit /var/run/reboot-required"
+
+
+# Apt packages
+sudo apt install docker scrot ranger  sshfs
 
 # eternal terminal stuff
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:jgmath2000/et
 sudo apt-get update
 sudo apt-get install et
+echo "don't forget to add firewall rules for Eternal Terminal, sshfs"
 
 
-# for dev envs  TODO flag this
-# Python
-# latest version at  https://www.anaconda.com/download/#linux
-#curl https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -o anaconda.sh
-#bash anaconda.sh -b -p $HOME/src/anaconda3
-#rm -f anaconda.sh
-#source .zshrc
-#pip install --upgrade pip
-#conda update --all
-#pip install tensorflow-gpu tqdm bs4 dash boto3 plotly pyspark seaborn fire torch
 
-# GUI stuff  TODO make flag
-#sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad
+########### GUI stuff  ############# TODO make flag
+# https://github.com/powerline/fonts
+sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad fonts-font-awesome fonts-powerline
 
+## if fontawesome is not working
+#wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
+#unzip fontawesome-free-5.0.13.zip
+#sudo cp fontawesome-free-5.0.13/use-on-desktop/* /usr/local/share/fonts/
+#rm -rf fontawesome-free*
+#fc-cache -f -v
+#the next command help see the name to use-on-desktop
+#here Font Awesome 5 Free
+#fc-list | grep -i "awe"
 
-## guake
+echo "change the following in guake:"
+echo "toggle to mod+Enter and autostart. Change to Desert theme. Disable popup notification, hide tray icon."
+echo "keybindings: Ctrl-C to copy, Ctrl-V to paste, Ctrl-T new tab, Ctrl+Shift+T close tab, switch tabs Alt-left or right, move tabs with Ctrl+Alt_left or right. Rename Ctrl-R."
+echo "change font to Powerline font."
 
-#toggle to mod+Enter and autostart. Change to Desert theme. Disable popup notification, hide tray icon.
-
-#Ctrl-C to copy, Ctrl-V to paste, Ctrl-T new tab, Ctrl+Shift+T close tab, switch tabs Alt-left or right, move tabs with Ctrl+Alt_left or right. Rename Ctrl-R.
-
-#Change to Powerline font.
-
-## i3-gaps
+echo "installing i3-gaps"
 #https://github.com/pasiegel/i3-gaps-install-ubuntu
 #Make sure to install dependencies first
 #https://github.com/Airblader/i3/wiki/Compiling-&-Installing
-#sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
-
-#cd /tmp
-#git clone https://www.github.com/Airblader/i3 i3-gaps
-#cd i3-gaps
-#git checkout gaps && git pull
-#autoreconf --force --install
-#rm -rf build
-#mkdir build
-#cd build
-#../configure --prefix=/usr --sysconfdir=/etc
-#make
-#sudo make install
-#cd ~
-
-## albert
-
-#https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert
-
-#Enable Apps, calculator plugin
+sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
+cd /tmp
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps
+git checkout gaps && git pull
+autoreconf --force --install
+rm -rf build
+mkdir build
+cd build
+../configure --prefix=/usr --sysconfdir=/etc
+make
+sudo make install
+cd ~
 
 
 ## Pycharm
+echo "download pycharm at https://www.jetbrains.com/pycharm/download/#section=linux"
+echo "Theme: Dracula. +fontsize. Change default to Anaconda."
 
-#https://www.jetbrains.com/pycharm/download/#section=linux
-#Theme: Dracula. +fontsize. Change default to Anaconda.
+echo "open nitrogen, set a wp"
 
+
+echo "##### DEEP LEARNING NODE SET-UP  ######  TODO flag"
+echo "if not using AMI that comes with CUDA, see here:"
+echo "https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e"
+
+# Python
+# latest version at  https://www.anaconda.com/download/#linux
+curl https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -o anaconda.sh
+bash anaconda.sh -b -p $HOME/src/anaconda3
+rm -f anaconda.sh
+source .zshrc
+pip install --upgrade pip
+#conda update --all
+pip install tensorflow-gpu tqdm bs4 dash boto3 plotly pyspark seaborn fire torch
+
+
+#### clean up
+sudo apt -y autoremove
+
+
+##### GRAVEYARD   ######
 
 ## voice2code
 
 
 ### docker
-
 #https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 
 ### pyaudio 
@@ -153,19 +161,6 @@ sudo apt-get install et
 
 #https://github.com/crypdick/silvius-crypdick
 
-## mpw
-
-#https://gitlab.com/MasterPassword/MasterPassword
-
-## nitrogen
-
-#open it, set a wp
-
-## CUDA, tf
-
-#https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e
-
-
 ## break reminders
 
 #https://github.com/hovancik/stretchly/
@@ -176,17 +171,4 @@ sudo apt-get install et
 
 #https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
 #aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
-
-# clean up
-sudo apt -y autoremove
-
-# install Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim -c VundleUpdate -c quitall
-
-# finally, unattended upgrades at very end
-sudo apt -y install unattended-upgrades
-sudo dpkg-reconfigure --priority=low unattended-upgrades
-
-#edit `/var/run/reboot-required`
 
