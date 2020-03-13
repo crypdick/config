@@ -100,3 +100,10 @@ syntax on
 " input command feedback
 " https://stackoverflow.com/a/8160809/4212158
 set showcmd
+
+" remap / so that searches are case-insensitive, but substitutions searches
+" remain case-sensitive
+nnoremap / /\c
+nnoremap ? ?\c
+
+
