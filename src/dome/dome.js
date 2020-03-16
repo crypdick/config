@@ -34,17 +34,22 @@
 // div.innerHTML : {a.innerHTML : a.href}
 var sites = {
 			"Social": {
-				"GitLab"			: "https://gitlab.com/Capuno",
 				"YouTube"			: "https://www.youtube.com/",
+				"Github"		: "https://github.com/crypdick",
 			},
-			"E-Mail": {
-				"GMail"				: "https://mail.google.com/mail/u/0/",
+			"Climate911": {
+				"Dendra GMail"				: "https://mail.google.com/mail/u/0/",
+				"Dendra.io"				: "dendra.io",
+				"Dendra Slack"				: "https://app.slack.com/client/T0D6ZV0PN/CTW57U2UE",
+				"Dendra Jira tasks"				: "https://biocarbon.atlassian.net/jira/software/projects/SKAI/boards/15",
+				"Dendra Bitbucket"				: "https://bitbucket.org/biocarbonengineering/",
+				"Climatechange.ai forums"				: "forums.climatechange.ai",
 			},
 			"My stuff": {
-				"capuno.cat"		: "https://capuno.cat/",
-				"gnu.cat"			: "https://gnu.cat/",
-				"life"				: "https://life.capuno.cat/",
-				"rice"				: "https://rice.capuno.cat/"
+				"Github"		: "https://github.com/crypdick",
+				"Pocket"			: "https://app.getpocket.com/",
+				"Caprover"				: "caprover.caprover.richarddecal.com",
+				"Homepage"				: "richarddecal.com"
 			}
 		};
 
