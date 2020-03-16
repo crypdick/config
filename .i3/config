@@ -91,7 +91,7 @@ bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+q --release exec --no-startup-id xkill
 bindsym $mod+m exec clementine
-bindsym $mod+Ctrl+Delete exec gnome-system-monitor
+bindsym $mod+Ctrl+Delete exec mate-system-monitor
 #bindsym $mod+n exec zim
 bindsym $mod+p exec keepassx
 
