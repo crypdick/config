@@ -3,15 +3,20 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-alias zshconfig="mate ~/.zshrc"
+# see all aliases created by omzsh plugins
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias plz='sudo'
 alias wtf='dmesg|tail -n 25'
 alias pingg='ping google.com'
-alias sql3='rlwrap sqlite3'
-alias historyg='history|grep'
+alias hz='history|fzf'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 #alias TODO='vim ~/doc_shit/TODO'
 alias grep='egrep --color'
 alias i3cheatsheet='egrep ^bind ~/.i3/config | cut -d '\'' '\'' -f 2- | sed '\''s/ /\t/'\'' | column -ts $'\''\t'\'' | pr -2 -w 160 -t | less'
 alias holla='python ~/src/conky-tree/holla.py'
+alias v='vim'
+# omzsh plugin cp
+alias cp="cpv"
+# omzsh plugin coloorize
+alias cat="ccat"
+alias less="cless"
+alias Z="| fzf"
