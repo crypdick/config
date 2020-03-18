@@ -62,7 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitignore common-aliases colored-man-pages cp extract command-not-found ubuntu)
+plugins=(git gitignore common-aliases colorize colored-man-pages cp extract command-not-found autojump ubuntu magic-enter)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,6 +87,10 @@ export ARCHFLAGS="-arch x86_64"
 source $HOME/.aliases
 
 
+# function to forget the last command from history
+function forget() {
+   history -d $(expr $(history | tail -n 1 | grep -oP '^ \d+') - 1);
+}
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -105,7 +109,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 
-export PATH="$HOME/src/anaconda3/bin:$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
 
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64/
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64"
@@ -121,3 +125,19 @@ source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.z
 # source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  install thru apt instead
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('$HOME/src/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/src/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/src/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH=$HOME/src/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
