@@ -13,16 +13,19 @@ sudo apt update && sudo apt -y upgrade
 sudo apt -y install git zsh zsh-syntax-highlighting vim python-pygments autojump
 
 #https://github.com/eyenx/omzsh
+# TODO: check first
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 #source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+# TODO: check first
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 source ~/.zshrc
 
 echo "fetching config repo from github"
 # based on https://www.atlassian.com/git/tutorials/dotfiles
+# TODO: check first, if already present just config pull
 git clone --bare https://github.com/crypdick/config.git $HOME/.cfg
 
 # define config in current scope
@@ -46,6 +49,7 @@ config config status.showUntrackedFiles no
 
 
 echo "install Vundle"
+# TODO check first
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim -c VundleUpdate -c quitall
 
