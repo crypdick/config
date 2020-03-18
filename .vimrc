@@ -89,6 +89,8 @@ let g:workspace_autosave_always = 1
 filetype plugin on
 syntax on
 
+let g:vimwiki_list = [{'path': '~/src/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
+
 " see end of https://jeffkreeftmeijer.com/vim-number/
 :set number relativenumber
 :augroup numbertoggle
