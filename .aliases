@@ -7,6 +7,7 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias wtf='dmesg|tail -n 25'
 alias pingg='ping google.com'
+alias pg='ping google.com'
 alias hz='history|fzf'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 #alias TODO='vim ~/doc_shit/TODO'
