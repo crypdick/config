@@ -10,7 +10,7 @@ echo "##### THINGS TO INSTALL EVERYWHERE ###"
 
 echo "setup vanilla shell before overwriting it when pulling config "
 sudo apt update && sudo apt -y upgrade
-sudo apt -y install git zsh zsh-syntax-highlighting vim
+sudo apt -y install git zsh zsh-syntax-highlighting vim python-pygments autojump
 
 #https://github.com/eyenx/omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
