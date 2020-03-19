@@ -85,7 +85,8 @@ echo "don't forget to add firewall rules for Eternal Terminal, sshfs"
 
 ########### GUI stuff  ############# TODO make flag
 # https://github.com/powerline/fonts
-sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad fonts-font-awesome fonts-powerline
+sudo apt install fonts-font-awesome fonts-powerline
+#sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad
 
 ## if fontawesome is not working
 #wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
@@ -106,19 +107,19 @@ echo "installing i3-gaps"
 #https://github.com/pasiegel/i3-gaps-install-ubuntu
 #Make sure to install dependencies first
 #https://github.com/Airblader/i3/wiki/Compiling-&-Installing
-sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
-cd /tmp
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-git checkout gaps && git pull
-autoreconf --force --install
-rm -rf build
-mkdir build
-cd build
-../configure --prefix=/usr --sysconfdir=/etc
-make
-sudo make install
-cd ~
+#sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
+#cd /tmp
+#git clone https://www.github.com/Airblader/i3 i3-gaps
+#cd i3-gaps
+#git checkout gaps && git pull
+#autoreconf --force --install
+#rm -rf build
+#mkdir build
+#cd build
+#../configure --prefix=/usr --sysconfdir=/etc
+#make
+#sudo make install
+#cd ~
 
 
 ## Pycharm
