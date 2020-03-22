@@ -107,8 +107,8 @@ bindsym $mod+l focus right
 # switching focus between monitors is simply with $mod+direction
 
 # move focused window between monitors
-bindsym $mod+Shift+greater move container to output right
-bindsym $mod+Shift+less move container to output left
+bindsym $mod+Shift+less move container to output HDMI-1
+bindsym $mod+Shift+greater move container to output HDMI-2
 
 # move focused workspace between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
@@ -468,7 +468,7 @@ set $i3_color17         #0c0c0c
 
 # hide/unhide i3status bar
 #bindsym $mod+m bar mode toggle
-exec_always --no-startup-id ~/.i3/polybar.sh &
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Theme colors
 # class                 border      backgr.     text        indic.      child_border
