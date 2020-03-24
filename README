@@ -13,7 +13,7 @@ sudo apt update && sudo apt -y upgrade
 sudo apt -y install git zsh zsh-syntax-highlighting vim python-pygments autojump
 
 #https://github.com/eyenx/omzsh
-# TODO: check first
+rm -rf ~/.oh-my-zsh 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
@@ -25,7 +25,7 @@ source ~/.zshrc
 
 echo "fetching config repo from github"
 # based on https://www.atlassian.com/git/tutorials/dotfiles
-# TODO: check first, if already present just config pull
+rm -rf ~/.cfg
 git clone --bare https://github.com/crypdick/config.git $HOME/.cfg
 
 # define config in current scope
@@ -58,6 +58,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # TODO set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
 
 # fzf before source
+bash ~/.fzf/uninstall
+rm -rf ~/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
