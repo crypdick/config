@@ -15,11 +15,12 @@ sudo apt -y install git zsh zsh-syntax-highlighting vim python-pygments autojump
 #https://github.com/eyenx/omzsh
 rm -rf ~/.oh-my-zsh 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+source ~/.zshrc
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 #source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-# TODO: check first
+# need to source before next line
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 source ~/.zshrc
 
