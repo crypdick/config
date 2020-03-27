@@ -76,7 +76,7 @@ echo "edit /var/run/reboot-required"
 
 
 # Apt packages
-sudo apt install docker scrot ranger  sshfs
+sudo apt install docker scrot ranger htop sshfs
 
 # eternal terminal stuff
 sudo apt-get install -y software-properties-common
