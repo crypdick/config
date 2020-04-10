@@ -11,21 +11,23 @@ echo "##### THINGS TO INSTALL EVERYWHERE ###"
 echo "setup vanilla shell before overwriting it when pulling config "
 sudo apt update && sudo apt -y upgrade
 sudo apt -y install git zsh zsh-syntax-highlighting vim python-pygments autojump
+chsh -s /bin/zsh
 
 #https://github.com/eyenx/omzsh
-# TODO: check first
+rm -rf ~/.oh-my-zsh 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+source ~/.zshrc
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 #source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-# TODO: check first
+# need to source before next line
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 source ~/.zshrc
 
 echo "fetching config repo from github"
 # based on https://www.atlassian.com/git/tutorials/dotfiles
-# TODO: check first, if already present just config pull
+rm -rf ~/.cfg
 git clone --bare https://github.com/crypdick/config.git $HOME/.cfg
 
 # define config in current scope
@@ -58,6 +60,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # TODO set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
 
 # fzf before source
+bash ~/.fzf/uninstall
+rm -rf ~/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
@@ -72,7 +76,7 @@ echo "edit /var/run/reboot-required"
 
 
 # Apt packages
-sudo apt install docker scrot ranger  sshfs mate-terminal
+sudo apt install docker scrot ranger  sshfs mate-terminal htop
 
 # eternal terminal stuff
 sudo apt-get install -y software-properties-common
