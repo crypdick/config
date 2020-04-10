@@ -1,7 +1,5 @@
 " Richard Decal's vimrc
 
-" enable fzf
-set rtp+=~/.fzf
 
 " VUNDLE BLOCK
 " Don't try to be like vi
@@ -50,7 +48,7 @@ Plugin 'ervandew/supertab'
 Plugin 'tmhedberg/SimpylFold'
 
 " commenting with [count]<leader>cc
-Plugin 'preservim/nerdcommenter' 
+Plugin 'preservim/nerdcommenter'
 
 " git integration
 Plugin 'tpope/vim-fugitive'
@@ -103,9 +101,24 @@ let g:vimwiki_list = [{'path': '~/src/vimwiki/', 'syntax': 'markdown', 'ext': '.
 " https://stackoverflow.com/a/8160809/4212158
 set showcmd
 
+" enable fzf
+set rtp+=~/.fzf
+
+" remap leader
+" let mapleader=","
+" increase timeout for leader
+set timeout timeoutlen=1200
+
+" remap nerdcommenter comment toggler
+nmap <C-/> <plug>NERDCommenterToggle
+xmap <C-/> <plug>NERDCommenterToggle
+
 " remap / so that searches are case-insensitive, but substitutions searches
 " remain case-sensitive
 nnoremap / /\c
 nnoremap ? ?\c
 
-
+" copy paste across vim terminals
+" https://askubuntu.com/a/620272/422690
+vmap <leader>y :w! /tmp/vitmp<CR>
+nmap <leader>p :r! cat /tmp/vitmp<CR>
