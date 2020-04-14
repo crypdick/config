@@ -164,8 +164,8 @@ font-6 = "Font Awesome:style=Regular"
 ;volume brightness battery_bar 
 
 modules-left = launcher i3
-modules-center = title 
-modules-right = wireless-network cpu memory filesystem  temperature updates alsa    date sysmenu
+modules-center = title
+modules-right = network cpu memory filesystem  temperature alsa    date sysmenu
 
 
 ; The separator will be inserted between the output of each module
