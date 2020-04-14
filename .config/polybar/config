@@ -132,13 +132,15 @@ module-margin-right = 2
 ;   font-3 = FontAwesome:size=10
 ; See the Fonts wiki page for more details
 
-;;font-0 = "Misc Termsyn:size=12;1"
-;;font-1 = "Wuncon Siji:size=12;1"
-
-font-0 = "NotoSans-Regular:size=10;2"
-font-1 = "Font Awesome 5 Brands:size=10;2"
-font-2 = "xos4 Terminus:size=12;1"
-font-3 = "icomoon\-feather:size=12;1"
+font-0 = "UbuntuCondensed Nerd Font:style=Regular:size=10;2"
+; cp from fonts/ subdir to ~/.local/share/fonts/
+font-1 = "icomoon\-feather:size=10;2"
+; "IcoMoon\-Free:style=Regular"
+font-2 = "Font Awesome 5 Brands:size=10;2"
+font-3 = "DejaVuSansMono Nerd Font:style=Book"
+font-4 = "Font Awesome:style=Regular"
+font-5 = "PowerlineSymbols:style=Medium"
+font-6 = "Font Awesome:style=Regular"
 
 ; Modules are added to one of the available blocks
 ;   modules-left = cpu ram
@@ -163,7 +165,7 @@ font-3 = "icomoon\-feather:size=12;1"
 
 modules-left = launcher i3
 modules-center = title 
-modules-right = checknetwork wireless-network cpu memory filesystem github temperature updates alsa battery backlight  date sysmenu
+modules-right = wireless-network cpu memory filesystem  temperature updates alsa    date sysmenu
 
 
 ; The separator will be inserted between the output of each module
@@ -184,7 +186,7 @@ wm-name =
 
 ; Locale used to localize various module data (e.g. date)
 ; Expects a valid libc locale, for example: sv_SE.UTF-8
-locale = 
+locale =
 
 ; Position of the system tray window
 ; If empty or undefined, tray support will be disabled
