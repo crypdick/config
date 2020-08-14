@@ -39,7 +39,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 
 " autocompletion
-Plugin 'zxqfl/tabnine-vim'
+"Plugin 'zxqfl/tabnine-vim'
 " Plugin 'Valloric/YouCompleteMe' replacing with tabnine
 " tab autocompletion
 Plugin 'ervandew/supertab'
@@ -60,8 +60,14 @@ Plugin 'vim-syntastic/syntastic'
 " filesystem browser
 Plugin 'scrooloose/nerdtree'
 
-" for C programming
-" Plugin 'ludovicchabant/vim-gutentags'
+" PlantUML
+Plugin 'tyru/open-browser.vim'
+Plugin 'aklt/plantuml-syntax'
+Plugin 'weirongxu/plantuml-previewer.vim'
+
+"devicons. NOTE LOAD LAST
+Plugin 'ryanoasis/vim-devicons'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -79,6 +85,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 
+" for vim-devicons
+set encoding=UTF-8
 
 
 let g:workspace_autosave_always = 1

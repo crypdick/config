@@ -68,6 +68,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# enable better-exceptions
+# https://github.com/Qix-/better-exceptions
+export BETTER_EXCEPTIONS=1
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -128,16 +132,16 @@ source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.z
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('~/src/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/richard/src/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "~/src/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "~/src/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/richard/src/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/richard/src/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="~/src/anaconda3/bin:$PATH"
+        export PATH="/home/richard/src/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-export PATH="$HOME/src/anaconda3/bin:$PATH"
+# export PATH="$HOME/src/anaconda3/bin:$PATH"  # commented out by conda initialize

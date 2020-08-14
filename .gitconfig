@@ -14,7 +14,7 @@
     remote = origin
     merge = refs/heads/master
 [push]
-    default = tracking
+	default = current
 
 [fetch]
     recurseSubmodules = true
@@ -23,3 +23,5 @@
 [log]
     decorate = short
 
+[pull]
+	default = current

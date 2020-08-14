@@ -6,7 +6,7 @@
 
 # autotile windows into quadrants
 #  https://github.com/nwg-piotr/autotiling
-exec --no-startup-id python3 ~/src/autotiling/autotiling.py
+exec --no-startup-id python3 ~/src/PERSONALIZE/autotiling/autotiling.py
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -70,8 +70,8 @@ bindsym $mod+Ctrl+grave exec chromium
 bindsym $mod+f [title="ranger"] scratchpad show
 bindsym $mod+Shift+w [title="ranger"] scratchpad show
 # TODO not working
-bindsym $mod+n exec --no-startup-id ~/src/conky-tree/i3_scratchpad_toggle ranger "$TERMINAL -t ranger -e ranger"
-bindsym $mod+t exec mousepad
+bindsym $mod+n exec --no-startup-id ~/src/PERSONALIZE/conky-tree/i3_scratchpad_toggle ranger "$TERMINAL -t ranger -e ranger"
+bindsym $mod+t exec gedit
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
@@ -338,10 +338,10 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id clipit
-exec_always --no-startup-id ~/src/keynav/keynav
+exec_always --no-startup-id ~/src/PERSONALIZE/keynav/keynav
 exec_always --no-startup-id xmodmap -e 'keycode 105 = Menu'
-exec --no-startup-id ~/src/conky-tree/wallpaper05/conky.sh
-exec --no-startup-id xautolock -time 1200 -locker ~/src/conky-tree/lock.sh
+exec --no-startup-id ~/src/PERSONALIZE/conky-tree/wallpaper05/conky.sh
+exec --no-startup-id xautolock -time 1200 -locker ~/src/PERSONALIZE/conky-tree/lock.sh
 exec_always --no-startup-id ff-theme-util
 #exec_always --no-startup-id nextcloud
 exec_always --no-startup-id fix_xcursor
@@ -351,7 +351,7 @@ exec_always --no-startup-id fix_xcursor
 # NZ -36.85:174.76
 # BsAs -34.54:-58.41
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent   # geoclue for redshift
-exec --no-startup-id redshift-gtk  # -l -34.54:-58.41 automode works!
+#exec --no-startup-id redshift-gtk  # -l -34.54:-58.41 automode works!
 exec --no-startup-id guake
 exec_always --no-startup-id stretchly
 
