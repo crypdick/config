@@ -53,7 +53,7 @@ config config status.showUntrackedFiles no
 echo "install Vundle"
 # TODO check first
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim -c VundleUpdate -c quitall
+#vim -c VundleUpdate -c quitall
 
 
 # TODO git pull vimwiki
