@@ -90,7 +90,7 @@ echo "don't forget to add firewall rules for Eternal Terminal, sshfs"
 ########### GUI stuff  ############# TODO make flag
 # https://github.com/powerline/fonts
 sudo apt install fonts-font-awesome fonts-powerline
-#sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad xautolock imagemagick clementine
+#sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad xautolock imagemagick clementine polybar
 
 ## if fontawesome is not working
 #wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
