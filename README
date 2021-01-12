@@ -78,7 +78,7 @@ echo "edit /var/run/reboot-required"
 # Apt packages
 sudo apt install docker scrot ranger  sshfs mate-terminal htop
 
-# eternal terminal stuff
+# eternal terminal
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:jgmath2000/et
 sudo apt-get update
@@ -107,7 +107,7 @@ echo "toggle to mod+Enter and autostart. Change to Desert theme. Disable popup n
 echo "keybindings: Ctrl-C to copy, Ctrl-V to paste, Ctrl-T new tab, Ctrl+Shift+T close tab, switch tabs Alt-left or right, move tabs with Ctrl+Alt_left or right. Rename Ctrl-R."
 echo "change font to Powerline font."
 
-echo "installing i3-gaps"
+#echo "installing i3-gaps"
 #https://github.com/pasiegel/i3-gaps-install-ubuntu
 #Make sure to install dependencies first
 #https://github.com/Airblader/i3/wiki/Compiling-&-Installing
@@ -127,25 +127,25 @@ echo "installing i3-gaps"
 
 
 ## Pycharm
-echo "download pycharm at https://www.jetbrains.com/pycharm/download/#section=linux"
-echo "Theme: Dracula. +fontsize. Change default to Anaconda."
+#echo "download pycharm at https://www.jetbrains.com/pycharm/download/#section=linux"
+#echo "Theme: Dracula. +fontsize. Change default to Anaconda."
 
-echo "open nitrogen, set a wp"
+#echo "open nitrogen, set a wp"
 
 
-echo "##### DEEP LEARNING NODE SET-UP  ######  TODO flag"
-echo "if not using AMI that comes with CUDA, see here:"
-echo "https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e"
+#echo "##### DEEP LEARNING NODE SET-UP  ######  TODO flag"
+#echo "if not using AMI that comes with CUDA, see here:"
+#echo "https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e"
 
 # Python
 # latest version at  https://www.anaconda.com/download/#linux
-curl https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -o anaconda.sh
-bash anaconda.sh -b -p $HOME/src/anaconda3
-rm -f anaconda.sh
+#curl https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -o anaconda.sh
+#bash anaconda.sh -b -p $HOME/src/anaconda3
+#rm -f anaconda.sh
 source .zshrc
-pip install --upgrade pip
+#pip install --upgrade pip
 #conda update --all
-pip install tensorflow-gpu tqdm bs4 dash boto3 plotly pyspark seaborn fire torch
+#pip install tensorflow-gpu tqdm bs4 dash boto3 plotly pyspark seaborn fire torch
 
 
 #### clean up
