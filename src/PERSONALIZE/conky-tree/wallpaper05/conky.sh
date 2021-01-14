@@ -6,4 +6,4 @@
 #   each other
 
 # starts conky scripts
-conky -dc ~/src/conky-tree/wallpaper05/conky_left.conf & conky -dc ~/src/conky-tree/wallpaper05/conky_right.conf & conky -dc ~/src/conky-tree/wallpaper05/conky_left.conf   -x 1920 & conky -dc ~/src/conky-tree/wallpaper05/conky_right.conf  -x 1920
+conky -dc ~/src/PERSONALIZE/conky-tree/wallpaper05/conky_left.conf & conky -dc ~/src/PERSONALIZE/conky-tree/wallpaper05/conky_right.conf & conky -dc ~/src/PERSONALIZE/conky-tree/wallpaper05/conky_left.conf   -x 1920 & conky -dc ~/src/PERSONALIZE/conky-tree/wallpaper05/conky_right.conf  -x 1920
