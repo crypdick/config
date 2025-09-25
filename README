@@ -11,22 +11,27 @@
 #   BACKUP_DIR       - backup location for conflicting files (default: $HOME/.config-backup)
 #   INSTALL_OHMYZSH  - set to 0 to skip optional Oh My Zsh install
 
+# Fail fast on errors/undefined variables/pipes
 set -euo pipefail
 
+# Allow overrides via environment variables when piping to bash
 REPO_URL="${REPO_URL:-https://github.com/crypdick/config.git}"
 CFG_DIR="${CFG_DIR:-$HOME/.cfg}"
 CONFIG_WORKTREE="${CONFIG_WORKTREE:-$HOME}"
 BACKUP_DIR="${BACKUP_DIR:-$HOME/.config-backup}"
 INSTALL_OHMYZSH="${INSTALL_OHMYZSH:-1}"
 
+# Pretty-print headings during execution
 log() {
   printf '\n==> %s\n' "$*"
 }
 
+# Test if a command exists
 have() {
   command -v "$1" >/dev/null 2>&1
 }
 
+# Wrapper that uses sudo only when needed
 run_with_sudo() {
   if have sudo && [[ ${EUID:-0} -ne 0 ]]; then
     sudo "$@"
@@ -35,6 +40,7 @@ run_with_sudo() {
   fi
 }
 
+# Install Homebrew on macOS hosts that lack it
 install_homebrew() {
   if have brew; then
     return
@@ -48,6 +54,7 @@ install_homebrew() {
   fi
 }
 
+# Install baseline packages via apt-get or Homebrew
 install_packages() {
   if have apt-get; then
     log "Installing packages with apt-get"
@@ -65,6 +72,7 @@ install_packages() {
   fi
 }
 
+# Ensure core dependencies (package manager, git, curl) are available
 ensure_prerequisites() {
   if [[ "$OSTYPE" == darwin* ]]; then
     install_homebrew
@@ -81,6 +89,7 @@ ensure_prerequisites() {
   fi
 }
 
+# Attempt to make zsh the login shell when installed
 ensure_zsh_default() {
   if ! have zsh; then
     log "zsh not found; skipping chsh step. Install zsh and re-run if desired."
@@ -98,6 +107,7 @@ ensure_zsh_default() {
   fi
 }
 
+# Optionally install Oh My Zsh without touching existing .zshrc
 install_oh_my_zsh() {
   if [[ "$INSTALL_OHMYZSH" != "1" ]]; then
     return
@@ -115,6 +125,7 @@ install_oh_my_zsh() {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
+# Clone or update bundled Oh My Zsh plugins
 ensure_zsh_plugins() {
   if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     log "Oh My Zsh not detected; skipping plugin clones"
@@ -124,6 +135,7 @@ ensure_zsh_plugins() {
   mkdir -p "$base"
 
   clone_or_update() {
+    # Clone the plugin if missing, otherwise fast-forward it
     local name="$1" repo="$2" path="$base/$1"
     if [[ -d "$path/.git" ]]; then
       log "Updating $name"
@@ -138,6 +150,7 @@ ensure_zsh_plugins() {
   clone_or_update zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
 }
 
+# Clone the bare repo and check files into the worktree with backups
 bootstrap_dotfiles() {
   log "Cloning dotfiles (bare repo)"
   if [[ ! -d "$CFG_DIR" ]]; then
@@ -153,6 +166,7 @@ bootstrap_dotfiles() {
 
   mkdir -p "$BACKUP_DIR"
   log "Checking out tracked files into $CONFIG_WORKTREE"
+  # Capture checkout conflicts to a temp file so we can back them up
   tmpfile=$(mktemp)
   if ! config checkout 2>"$tmpfile"; then
     log "Backing up pre-existing dotfiles into $BACKUP_DIR"
@@ -169,6 +183,7 @@ bootstrap_dotfiles() {
   config config status.showUntrackedFiles no
 }
 
+# Print follow-up actions for the user
 post_install_notes() {
   cat <<'EON'
 
@@ -187,6 +202,7 @@ Happy hacking!
 EON
 }
 
+# Orchestrate the full bootstrap
 main() {
   ensure_prerequisites
   ensure_zsh_default

@@ -1,24 +1,31 @@
-# Additional aliases layered on top of oh-my-zsh plugins
 alias c='clear'
 alias wtf='dmesg | tail -n 25'
 alias myip='curl -fsSL https://api.ipify.org?format=json'
+# Fuzzy search through shell history
 alias hz='history | fzf'
+# Wrapper around the bare-repo dotfiles git alias
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias v='vim'
+# `cmd Z` to pop results into fzf
 alias Z='| fzf'
 
 if command -v bat >/dev/null 2>&1; then
+  # Use bat for syntax-highlighted cat when installed
   alias cat='bat --paging=never'
 elif command -v ccat >/dev/null 2>&1; then
+  # Fall back to ccat for colorized cat
   alias cat='ccat'
 fi
 
 if command -v cpv >/dev/null 2>&1; then
+  # cpv gives progress bars for copy operations
   alias cp='cpv'
 else
+  # Otherwise use interactive copy to avoid accidental overwrites
   alias cp='cp -iv'
 fi
 
 if command -v lesspipe >/dev/null 2>&1; then
+  # Let less preview compressed/complex formats
   export LESSOPEN='| lesspipe %s'
 fi

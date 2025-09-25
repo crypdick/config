@@ -1,5 +1,6 @@
-" Minimal, modern Vim configuration
+" Ricardo Decal's vimrc
 
+" Ensure Vim starts in nocompatible mode
 if has('compatible')
   set nocompatible
 endif
@@ -8,7 +9,7 @@ set encoding=utf-8
 filetype plugin indent on
 syntax on
 
-" UI improvements
+" UI improvements for better readability
 set number
 set relativenumber
 set cursorline
@@ -17,13 +18,13 @@ set scrolloff=5
 set termguicolors
 set laststatus=2
 
-" Searching
+" Case-smart incremental searching
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
 
-" Indentation and whitespace
+" Use spaces by default and keep indentation predictable
 set expandtab
 set shiftwidth=2
 set tabstop=2
@@ -31,33 +32,33 @@ set softtabstop=2
 set smartindent
 set autoindent
 
-" Windows and splits
+" Friendlier buffer/window behaviour
 set splitbelow
 set splitright
 set hidden
 
-" Completion & command-line
+" Improved completion UI
 set wildmenu
 set wildmode=longest:full,full
 set pumheight=10
 
-" Performance tweaks
+" Make redraws and CursorHold events faster
 set updatetime=300
 set lazyredraw
 
-" Clipboard integration when available
+" Integrate with system clipboard when possible
 if has('clipboard')
   set clipboard+=unnamedplus
 endif
 
-" Better undo persistence when supported
+" Persist undo history between sessions
 if has('persistent_undo')
   silent! call mkdir($HOME.'/.vim/undo', 'p')
   set undofile
   set undodir=$HOME/.vim/undo
 endif
 
-" Highlight text briefly after yanking
+" Highlight text briefly after yanking (Neovim only)
 augroup highlight_yank
   autocmd!
   if has('nvim')
@@ -65,7 +66,7 @@ augroup highlight_yank
   endif
 augroup END
 
-" Leader key for future mappings
+" Define <leader> and handy toggles
 let mapleader = " "
 
 " Convenience mappings

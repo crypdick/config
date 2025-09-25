@@ -1,24 +1,38 @@
+
+; Identify commits regardless of machine
 [user]
 	email = public@ricardodecal.com
 	name = Ricardo Decal
+
+; Cache credentials in memory for long-lived sessions
 [credential]
 	helper = cache --timeout=360000000
+
+; Default GitHub username when basic auth is required
 [credential "https://github.com"]
 	username = crypdick
+
+; Disable Cola spellcheck (GUI preference)
 [cola]
 	spellcheck = false
+
+; Keep line endings sane on cross-platform repos
 [core]
 	autocrlf = input
 
+; Push the current branch by default
 [push]
 	default = current
 
+; Keep submodules in sync and prune stale refs
 [fetch]
     recurseSubmodules = true
 	prune = true
 
+; Shorten decorate output in git log
 [log]
     decorate = short
 
+; Make pull act like pull --rebase by default (fast-forward preference)
 [pull]
 	default = current
