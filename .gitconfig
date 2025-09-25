@@ -1,7 +1,7 @@
 
 ; Identify commits regardless of machine
 [user]
-	email = public@ricardodecal.com
+	email = rdecal@anyscale.com
 	name = Ricardo Decal
 
 ; Cache credentials in memory for long-lived sessions
@@ -29,6 +29,9 @@
     recurseSubmodules = true
 	prune = true
 
+[format]
+	signOff = true
+
 ; Shorten decorate output in git log
 [log]
     decorate = short
@@ -36,3 +39,6 @@
 ; Make pull act like pull --rebase by default (fast-forward preference)
 [pull]
 	default = current
+
+[push]
+	autoSetupRemote = true
