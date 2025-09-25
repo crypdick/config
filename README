@@ -174,7 +174,7 @@ bootstrap_dotfiles() {
       [[ -z "$path" ]] && continue
       mkdir -p "$BACKUP_DIR/$(dirname "$path")"
       mv "$CONFIG_WORKTREE/$path" "$BACKUP_DIR/$path" 2>/dev/null || true
-    done < <(grep -E "^\s+\." "$tmpfile" | awk '{print $1}')
+    done < <(grep -E "^[[:space:]]+\." "$tmpfile" | awk '{print $1}')
   fi
   rm -f "$tmpfile"
   config checkout
