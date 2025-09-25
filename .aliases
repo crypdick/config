@@ -1,24 +1,24 @@
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# see all aliases created by omzsh plugins
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias wtf='dmesg|tail -n 25'
-alias pingg='ping google.com'
-alias pg='ping google.com'
-alias icanhazip="curl 'https://api.ipify.org?format=json'"
-alias hz='history|fzf'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-#alias TODO='vim ~/doc_shit/TODO'
-alias grep='egrep --color'
-alias i3cheatsheet='egrep ^bind ~/.i3/config | cut -d '\'' '\'' -f 2- | sed '\''s/ /\t/'\'' | column -ts $'\''\t'\'' | pr -2 -w 160 -t | less'
-alias holla='python ~/src/conky-tree/holla.py'
+# Additional aliases layered on top of oh-my-zsh plugins
+alias c='clear'
+alias wtf='dmesg | tail -n 25'
+alias myip='curl -fsSL https://api.ipify.org?format=json'
+alias hz='history | fzf'
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias v='vim'
-# omzsh plugin cp
-alias cp="cpv"
-# omzsh plugin coloorize
-alias cat="ccat"
-alias less="cless"
-alias Z="| fzf"
+alias Z='| fzf'
+
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat --paging=never'
+elif command -v ccat >/dev/null 2>&1; then
+  alias cat='ccat'
+fi
+
+if command -v cpv >/dev/null 2>&1; then
+  alias cp='cpv'
+else
+  alias cp='cp -iv'
+fi
+
+if command -v lesspipe >/dev/null 2>&1; then
+  export LESSOPEN='| lesspipe %s'
+fi

@@ -1,183 +1,199 @@
-# config
+#!/usr/bin/env bash
+# config bootstrap script (README doubles as documentation and installer)
+#
+# Run with:
+#   curl -fsSL https://raw.githubusercontent.com/crypdick/config/master/README | bash
+#
+# Environment overrides:
+#   REPO_URL         - alternate git remote (default: https://github.com/crypdick/config.git)
+#   CFG_DIR          - where to store the bare repo (default: $HOME/.cfg)
+#   CONFIG_WORKTREE  - checkout target (default: $HOME)
+#   BACKUP_DIR       - backup location for conflicting files (default: $HOME/.config-backup)
+#   INSTALL_OHMYZSH  - set to 0 to skip optional Oh My Zsh install
 
-sudo apt install curl
+set -euo pipefail
 
-# run this README with
-# curl https://raw.githubusercontent.com/crypdick/config/master/README | bash
+REPO_URL="${REPO_URL:-https://github.com/crypdick/config.git}"
+CFG_DIR="${CFG_DIR:-$HOME/.cfg}"
+CONFIG_WORKTREE="${CONFIG_WORKTREE:-$HOME}"
+BACKUP_DIR="${BACKUP_DIR:-$HOME/.config-backup}"
+INSTALL_OHMYZSH="${INSTALL_OHMYZSH:-1}"
 
-
-echo "##### THINGS TO INSTALL EVERYWHERE ###"
-
-echo "setup vanilla shell before overwriting it when pulling config "
-sudo apt update && sudo apt -y upgrade
-sudo apt -y install git zsh zsh-syntax-highlighting vim python-pygments autojump
-chsh -s /bin/zsh
-
-#https://github.com/eyenx/omzsh
-rm -rf ~/.oh-my-zsh 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-source ~/.zshrc
-
-# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-#source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-# need to source before next line
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-source ~/.zshrc
-
-echo "fetching config repo from github"
-# based on https://www.atlassian.com/git/tutorials/dotfiles
-rm -rf ~/.cfg
-git clone --bare https://github.com/crypdick/config.git $HOME/.cfg
-
-# define config in current scope
-function config {
-   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+log() {
+  printf '\n==> %s\n' "$*"
 }
-mkdir -p .config-backup
 
-# checkout bare repo to home
-config checkout -f
-# but, if there are errors, back up config and then re-run checkout
-if [ $? = 0 ]; then
-  echo "Checked out config.";
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+run_with_sudo() {
+  if have sudo && [[ ${EUID:-0} -ne 0 ]]; then
+    sudo "$@"
   else
-    echo "Backing up pre-existing dot files.";
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-fi;
-config checkout
+    "$@"
+  fi
+}
 
-config config status.showUntrackedFiles no
+install_homebrew() {
+  if have brew; then
+    return
+  fi
+  log "Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+}
 
+install_packages() {
+  if have apt-get; then
+    log "Installing packages with apt-get"
+    run_with_sudo apt-get update
+    run_with_sudo apt-get install -y git zsh curl vim fzf direnv autojump bat ripgrep
+  elif have brew; then
+    log "Installing packages with Homebrew"
+    brew update --quiet || true
+    brew install git zsh curl vim fzf direnv zoxide bat ripgrep || true
+    if ! have autojump && brew info autojump >/dev/null 2>&1; then
+      brew install autojump || true
+    fi
+  else
+    log "No supported package manager detected (apt-get or Homebrew). Skipping package installation."
+  fi
+}
 
-echo "install Vundle"
-# TODO check first
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-#vim -c VundleUpdate -c quitall
+ensure_prerequisites() {
+  if [[ "$OSTYPE" == darwin* ]]; then
+    install_homebrew
+  fi
+  install_packages
 
+  if ! have git; then
+    log "git is required but not installed. Install git manually and re-run."
+    exit 1
+  fi
+  if ! have curl; then
+    log "curl is required but not installed. Install curl manually and re-run."
+    exit 1
+  fi
+}
 
-# TODO git pull vimwiki
-# TODO set vimwiki to autocommit: https://dmoerner.wordpress.com/2017/08/14/vimwiki-and-git-autocommit/
+ensure_zsh_default() {
+  if ! have zsh; then
+    log "zsh not found; skipping chsh step. Install zsh and re-run if desired."
+    return
+  fi
+  local target_shell
+  target_shell="$(command -v zsh)"
+  if [[ -z "${SHELL:-}" || "${SHELL}" != "$target_shell" ]]; then
+    log "Attempting to set default shell to zsh"
+    if chsh -s "$target_shell" >/dev/null 2>&1; then
+      log "Default shell changed to zsh"
+    else
+      log "Could not change shell automatically; run 'chsh -s $target_shell' later."
+    fi
+  fi
+}
 
-# fzf before source
-bash ~/.fzf/uninstall
-rm -rf ~/.fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --all
+install_oh_my_zsh() {
+  if [[ "$INSTALL_OHMYZSH" != "1" ]]; then
+    return
+  fi
+  if [[ -d "$HOME/.oh-my-zsh" ]]; then
+    log "Oh My Zsh already present; skipping install"
+    return
+  fi
+  if ! have curl; then
+    log "curl not available; cannot install Oh My Zsh automatically"
+    return
+  fi
+  log "Installing Oh My Zsh"
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
 
-source ~/.zshrc
+ensure_zsh_plugins() {
+  if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+    log "Oh My Zsh not detected; skipping plugin clones"
+    return
+  fi
+  local base="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
+  mkdir -p "$base"
 
-# unattended upgrades
-sudo apt -y install unattended-upgrades
-sudo dpkg-reconfigure --priority=low unattended-upgrades
+  clone_or_update() {
+    local name="$1" repo="$2" path="$base/$1"
+    if [[ -d "$path/.git" ]]; then
+      log "Updating $name"
+      git -C "$path" pull --ff-only || log "Warning: could not update $name"
+    else
+      log "Cloning $name"
+      git clone --depth 1 "$repo" "$path"
+    fi
+  }
 
-# TODO what is this about
-echo "edit /var/run/reboot-required"
+  clone_or_update zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git
+  clone_or_update zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
+}
 
+bootstrap_dotfiles() {
+  log "Cloning dotfiles (bare repo)"
+  if [[ ! -d "$CFG_DIR" ]]; then
+    git clone --bare "$REPO_URL" "$CFG_DIR"
+  else
+    log "Bare repo already exists at $CFG_DIR; fetching updates"
+    git --git-dir="$CFG_DIR" --work-tree="$CONFIG_WORKTREE" fetch --all --prune
+  fi
 
-# Apt packages
-sudo apt install docker scrot ranger  sshfs mate-terminal htop
+  config() {
+    git --git-dir="$CFG_DIR" --work-tree="$CONFIG_WORKTREE" "$@"
+  }
 
-# eternal terminal
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:jgmath2000/et
-sudo apt-get update
-sudo apt-get install et
-echo "don't forget to add firewall rules for Eternal Terminal, sshfs"
+  mkdir -p "$BACKUP_DIR"
+  log "Checking out tracked files into $CONFIG_WORKTREE"
+  tmpfile=$(mktemp)
+  if ! config checkout 2>"$tmpfile"; then
+    log "Backing up pre-existing dotfiles into $BACKUP_DIR"
+    while IFS= read -r path; do
+      path="${path#\t}"
+      if [[ -n "$path" ]]; then
+        mkdir -p "$BACKUP_DIR/$(dirname "$path")"
+        mv "$CONFIG_WORKTREE/$path" "$BACKUP_DIR/$path" 2>/dev/null || true
+      fi
+    done < <(grep -E "\s+\." "$tmpfile")
+  fi
+  rm -f "$tmpfile"
+  config checkout
+  config config status.showUntrackedFiles no
+}
 
+post_install_notes() {
+  cat <<'EON'
 
+Next steps:
+  - Secrets: copy ~/.config/zsh/secrets.zsh.example to ~/.config/zsh/secrets.zsh and add API keys (kept out of git).
+  - Vim: configuration is lightweight and plugin-free; launch vim to confirm settings and add your own extras if desired.
+  - Optional tools: direnv, zoxide, and fzf keybindings activate automatically when the commands exist.
+  - Oh My Zsh plugins zsh-autosuggestions and zsh-syntax-highlighting live in ~/.oh-my-zsh/custom/plugins; pull updates per plugin when needed.
 
-########### GUI stuff  ############# TODO make flag
-# https://github.com/powerline/fonts
-sudo apt install fonts-font-awesome fonts-powerline
-#sudo apt install i3 i3-wm i3lock i3blocks conky nitrogen compton guake lightdm vlc gnome-system-monitor gsimplecal mouspad xautolock imagemagick clementine polybar
+Use the "config" wrapper (git --git-dir=$HOME/.cfg --work-tree=$HOME) to manage dotfiles:
+  config status
+  config pull --rebase
+  config commit -am "message"
 
-## if fontawesome is not working
-#wget "https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip"
-#unzip fontawesome-free-5.0.13.zip
-#sudo cp fontawesome-free-5.0.13/use-on-desktop/* /usr/local/share/fonts/
-#rm -rf fontawesome-free*
-#fc-cache -f -v
-#the next command help see the name to use-on-desktop
-#here Font Awesome 5 Free
-#fc-list | grep -i "awe"
+Happy hacking!
+EON
+}
 
-echo "change the following in guake:"
-echo "toggle to mod+Enter and autostart. Change to Desert theme. Disable popup notification, hide tray icon."
-echo "keybindings: Ctrl-C to copy, Ctrl-V to paste, Ctrl-T new tab, Ctrl+Shift+T close tab, switch tabs Alt-left or right, move tabs with Ctrl+Alt_left or right. Rename Ctrl-R."
-echo "change font to Powerline font."
+main() {
+  ensure_prerequisites
+  ensure_zsh_default
+  install_oh_my_zsh
+  ensure_zsh_plugins
+  bootstrap_dotfiles
+  post_install_notes
+}
 
-#echo "installing i3-gaps"
-#https://github.com/pasiegel/i3-gaps-install-ubuntu
-#Make sure to install dependencies first
-#https://github.com/Airblader/i3/wiki/Compiling-&-Installing
-#sudo apt  -y install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool
-#cd /tmp
-#git clone --depth=1 https://www.github.com/Airblader/i3 i3-gaps
-#cd i3-gaps
-#git checkout gaps && git pull
-#autoreconf --force --install
-#rm -rf build
-#mkdir build
-#cd build
-#../configure --prefix=/usr --sysconfdir=/etc
-#make
-#sudo make install
-#cd ~
-
-
-## Pycharm
-#echo "download pycharm at https://www.jetbrains.com/pycharm/download/#section=linux"
-#echo "Theme: Dracula. +fontsize. Change default to Anaconda."
-
-#echo "open nitrogen, set a wp"
-
-
-#echo "##### DEEP LEARNING NODE SET-UP  ######  TODO flag"
-#echo "if not using AMI that comes with CUDA, see here:"
-#echo "https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e"
-
-# Python
-# latest version at  https://www.anaconda.com/download/#linux
-#curl https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -o anaconda.sh
-#bash anaconda.sh -b -p $HOME/src/anaconda3
-#rm -f anaconda.sh
-source .zshrc
-#pip install --upgrade pip
-#conda update --all
-#pip install tensorflow-gpu tqdm bs4 dash boto3 plotly pyspark seaborn fire torch
-
-
-#### clean up
-sudo apt -y autoremove
-
-
-##### GRAVEYARD   ######
-
-## voice2code
-
-
-### docker
-#https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
-
-### pyaudio 
-#https://gist.github.com/diegopacheco/d5d4507988eff995da297344751b095e
-
-
-### silvius-crypdick
-
-#xdotool
-
-#https://github.com/crypdick/silvius-crypdick
-
-## break reminders
-
-#https://github.com/hovancik/stretchly/
-
-## music
-
-# `youtube-dl  --extract-audio  --audio-format  best --embed-thumbnail --external-downloader aria2c --external-downloader-args '--max-connection-per-server=15' --yes-playlist  "https://www.youtube.com/watch?v=lNmrCMCvbFg&list=PLhb-iq93UfDnE3wY1769ahvlNmXr2zMp0"`
-
-#https://github.com/rg3/youtube-dl/issues/350#issuecomment-244847884
-#aria2c --max-concurrent-downloads=10 --max-connection-per-server=20 `youtube-dl -g https://www.youtube.com/playlist?list=PLsPUh22kYmNBkabv9M4fXo6HMLKnc7iR6`
-
+main

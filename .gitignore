@@ -1,0 +1,11 @@
+.config-backup/
+.vim/autoload/plug.vim
+.vim/plugged/
+.config/zsh/secrets.zsh
+.config/zsh/env.d/*.local.zsh
+
+# Vim/Editor noise
+*.swp
+*.swo
+*.un~
+.DS_Store

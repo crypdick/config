@@ -1,147 +1,85 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin/:$PATH
+# Base paths and XDG defaults
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+: "${XDG_STATE_HOME:=$HOME/.local/state}"
+mkdir -p "$XDG_STATE_HOME/zsh"
 
+setopt EXTENDED_GLOB
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# PATH management
+typeset -U path PATH
+path=(
+  "$HOME/bin"
+  "$HOME/.local/bin"
+  $path
+)
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitignore common-aliases colorize colored-man-pages cp extract command-not-found autojump ubuntu magic-enter)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# enable better-exceptions
-# https://github.com/Qix-/better-exceptions
-export BETTER_EXCEPTIONS=1
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOME/.aliases
-
-
-# function to forget the last command from history
-function forget() {
-   history -d $(expr $(history | tail -n 1 | grep -oP '^ \d+') - 1);
-}
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-
-
-
-export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64/
-export LD_LIBRARY_PATH="LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64"
-
-# spotify-dl config
-export SPOTIPY_CLIENT_ID='352a708e3cc94cfba8451637e3c29aa7'
-export SPOTIPY_CLIENT_SECRET='c005fa88b0c84919af4a32355bda6ec2'
-#export SPOTIPY_REDIRECT_URI='your-app-redirect-url'
-#export YOUTUBE_DEV_KEY=''
-
-# keep this at end of file
-source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  install thru apt instead
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/Ricardo/src/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/Ricardo/src/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/Ricardo/src/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/Ricardo/src/anaconda3/bin:$PATH"
+if [[ $OSTYPE == darwin* ]]; then
+  for prefix in /opt/homebrew /usr/local; do
+    if [[ -x "$prefix/bin/brew" ]]; then
+      path=("$prefix/bin" "$prefix/sbin" $path)
+      break
     fi
+  done
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-# export PATH="$HOME/src/anaconda3/bin:$PATH"  # commented out by conda initialize
+
+export PATH
+
+# History configuration
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+
+# Shell ergonomics
+setopt AUTO_CD
+setopt INTERACTIVE_COMMENTS
+setopt CORRECT
+setopt COMPLETE_IN_WORD
+setopt GLOB_DOTS
+
+autoload -U colors && colors
+PROMPT='%F{cyan}%n@%m%f %F{yellow}%1~%f %# '
+
+# Load oh-my-zsh when available
+if [[ -d "${ZSH:-$HOME/.oh-my-zsh}" ]]; then
+  export ZSH="${ZSH:-$HOME/.oh-my-zsh}"
+  ZSH_THEME=${ZSH_THEME:-agnoster}
+  plugins=(git gitignore common-aliases colorize colored-man-pages extract command-not-found fzf)
+  source "$ZSH/oh-my-zsh.sh"
+fi
+
+# Optional extras
+if [[ -r "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+if [[ -r "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+[[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+if command -v conda >/dev/null 2>&1; then
+  eval "$(conda shell.zsh hook 2>/dev/null)"
+fi
+
+# Aliases and local configuration
+[[ -f $HOME/.aliases ]] && source $HOME/.aliases
+
+for cfg in "$XDG_CONFIG_HOME"/zsh/env.d/*.zsh(N); do
+  source "$cfg"
+done
+
+[[ -f "$XDG_CONFIG_HOME/zsh/secrets.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/secrets.zsh"
