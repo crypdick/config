@@ -1,4 +1,4 @@
-" Richard Decal's vimrc
+" Ricardo Decal's vimrc
 
 
 " VUNDLE BLOCK
