@@ -88,6 +88,8 @@ if command -v zoxide >/dev/null 2>&1; then
 fi
 
 if command -v conda >/dev/null 2>&1; then
+  # Keep conda from duplicating the prompt prefix e.g. (base)
+  export CONDA_CHANGEPS1=false
   eval "$(conda shell.zsh hook 2>/dev/null)"
 fi
 
