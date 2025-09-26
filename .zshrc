@@ -101,3 +101,17 @@ for cfg in "$XDG_CONFIG_HOME"/zsh/env.d/*.zsh(N); do
 done
 
 [[ -f "$XDG_CONFIG_HOME/zsh/secrets.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/secrets.zsh"
+
+# If you press enter in a git repo, show the Git status
+function __git_status_on_return() {
+  if [[ -z $BUFFER ]] && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo
+    git status --short --branch
+    zle redisplay
+    return
+  fi
+  zle accept-line
+}
+zle -N __git_status_on_return
+bindkey '^M' __git_status_on_return
+bindkey '\r' __git_status_on_return
